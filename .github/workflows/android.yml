@@ -22,7 +22,7 @@ jobs:
 
       - uses: android-actions/setup-android@v3
 
-      - uses: gradle/actions/setup-gradle@v4
+      - uses: gradle/actions/setup-gradle@v6
 
       # No secrets.properties is written on purpose: missing keys fall back to
       # an "UNSET" placeholder, so this also proves a fresh clone builds before
