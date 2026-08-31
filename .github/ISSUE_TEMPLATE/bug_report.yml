@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         Thanks for reporting. Please skim
-        [docs/troubleshooting.md](https://github.com/Prennoy99/shazam-to-ytmusic/blob/main/docs/troubleshooting.md)
+        [docs/troubleshooting.md](https://github.com/Prennoy99/shazam-sync/blob/main/docs/troubleshooting.md)
         first — it's organised by symptom and covers the common causes,
         several of which look like bugs but aren't.
 
