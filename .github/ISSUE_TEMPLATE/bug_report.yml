@@ -1,0 +1,69 @@
+name: 🐛 Bug report
+description: Something's broken in the pipeline.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please skim
+        [docs/troubleshooting.md](https://github.com/Prennoy99/shazam-to-ytmusic/blob/main/docs/troubleshooting.md)
+        first — it's organised by symptom and covers the common causes,
+        several of which look like bugs but aren't.
+
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where does it break?
+      options:
+        - Backend — deploy, startup, or endpoints
+        - Android — build or install
+        - Android — sharing does nothing
+        - Android — song plays, but the wrong one
+        - Android — plays fine, but never reaches the playlist
+        - Backfill script
+        - Setup docs are wrong or unclear
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, what you got. Quote any toast or error text exactly.
+    validations:
+      required: true
+
+  - type: input
+    id: health
+    attributes:
+      label: What does the health check return?
+      description: "curl https://<your-service>/health  — a slow-but-successful response is a normal free-tier cold start."
+      placeholder: '{"status":"ok"}, after about 40 seconds'
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      value: |
+        - Phone / Android version:
+        - YouTube Music client + package name:
+        - Backend host (Render / Fly / self-hosted / other):
+        - Built with Android Studio or `./gradlew`:
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: "Backend logs from your host, and/or `adb logcat | grep -i shazamsync`. Rendered as code, no backticks needed."
+      render: shell
+
+  - type: checkboxes
+    id: secrets
+    attributes:
+      label: Before you submit
+      options:
+        - label: I've removed any API keys, cookies, or `YTMUSIC_AUTH_JSON` values from the text above.
+          required: true

@@ -1,0 +1,14 @@
+# Holds API_KEY, PLAYLIST_ID, and your YouTube Music session cookies.
+.env
+
+# `ytmusicapi browser` writes this — it contains live Google session cookies.
+# Ignored as a safety net, but delete it once the value is in .env.
+browser.json
+headers_auth.json
+oauth.json
+
+__pycache__/
+*.pyc
+venv/
+.pytest_cache/
+.ruff_cache/

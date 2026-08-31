@@ -1,0 +1,74 @@
+name: Backend
+
+on:
+  push:
+    branches: [main]
+    paths: ['backend/**', 'backfill/**', '.github/workflows/backend.yml']
+  pull_request:
+    paths: ['backend/**', 'backfill/**', '.github/workflows/backend.yml']
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.12']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r backend/requirements-dev.txt
+          pip install -r backfill/requirements.txt
+
+      - name: Lint
+        run: ruff check backend backfill
+
+      - name: Test backend
+        working-directory: backend
+        run: pytest -q
+
+      - name: Test backfill
+        working-directory: backfill
+        run: pytest -q
+
+  docker:
+    name: Docker image builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t shazam-to-ytmusic ./backend
+
+      - name: Container starts and serves /health
+        run: |
+          docker run -d --name api -p 8080:8080 \
+            -e API_KEY=ci-test-key \
+            -e PLAYLIST_ID=PLtest \
+            -e YTMUSIC_AUTH_JSON='{}' \
+            shazam-to-ytmusic
+
+          for i in $(seq 1 30); do
+            if curl -sf http://localhost:8080/health; then
+              echo "  <- healthy"
+              exit 0
+            fi
+            sleep 1
+          done
+
+          echo "Never became healthy. Container logs:"
+          docker logs api
+          exit 1
+
+      - name: Clean up
+        if: always()
+        run: docker rm -f api || true

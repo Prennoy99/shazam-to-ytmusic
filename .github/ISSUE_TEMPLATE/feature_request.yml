@@ -1,0 +1,44 @@
+name: 💡 Idea or feature request
+description: Suggest something — or claim a roadmap item you want to build.
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        [docs/roadmap.md](https://github.com/Prennoy99/shazam-to-ytmusic/blob/main/docs/roadmap.md)
+        lists ideas grouped by effort, all unclaimed — plus a short
+        **non-goals** list worth checking so you don't spend a weekend on
+        something that won't be merged.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's the problem?
+      description: What are you doing today that's annoying, manual, or impossible?
+    validations:
+      required: true
+
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like instead?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: building
+    attributes:
+      label: Are you up for building it?
+      description: Totally fine either way — ideas are welcome on their own.
+      options:
+        - "Just suggesting the idea"
+        - "Maybe, with some guidance"
+        - "Yes, I'd like to take this on"
+    validations:
+      required: true
+
+  - type: input
+    id: roadmap
+    attributes:
+      label: Is this already on the roadmap?
+      placeholder: "Yes — 'Offline queue', 🟡 Medium"

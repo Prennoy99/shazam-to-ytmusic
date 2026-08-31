@@ -1,0 +1,43 @@
+# --- Secrets. Never commit these. ---
+.env
+.env.local
+**/secrets.properties
+# ytmusicapi browser auth output — live Google session cookies.
+# Delete it after copying the value into your env; this is a safety net.
+browser.json
+headers_auth.json
+oauth.json
+
+# --- Personal data ---
+# Backfill output: your own listening history, row by row.
+backfill_results.csv
+*.csv
+!**/example*.csv
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+env/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- Android / Gradle ---
+.gradle/
+build/
+local.properties
+*.apk
+*.aab
+captures/
+
+# --- Editors ---
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# --- OS ---
+.DS_Store
+Thumbs.db

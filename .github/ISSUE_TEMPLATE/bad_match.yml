@@ -1,0 +1,58 @@
+name: 🎵 Wrong song matched
+description: It played a cover, a live version, or something else entirely.
+labels: ["matching"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        These reports become **test cases**. Matching is deliberately simple
+        (top "Songs" result plus an artist-overlap tiebreaker), and real
+        failures are the only way to know where it needs to get smarter.
+
+        Non-English catalogues are especially valuable — transliteration
+        differences between Shazam and YouTube Music are a known weak spot.
+
+  - type: input
+    id: shazam
+    attributes:
+      label: What Shazam reported
+      placeholder: "295 by Sidhu Moose Wala"
+    validations:
+      required: true
+
+  - type: input
+    id: got
+    attributes:
+      label: What actually played
+      placeholder: "295 (Cover) by Some Other Artist"
+    validations:
+      required: true
+
+  - type: input
+    id: expected
+    attributes:
+      label: What should have played
+      description: A music.youtube.com link to the right track is ideal.
+    validations:
+      required: true
+
+  - type: textarea
+    id: search_response
+    attributes:
+      label: Backend /search response (optional but very helpful)
+      description: |
+        This shows exactly what the matcher chose:
+        ```
+        curl -X POST https://<your-service>/search \
+          -H "X-API-Key: <key>" -H "Content-Type: application/json" \
+          -d '{"title":"<title>","artists":["<artist>"]}'
+        ```
+        Remove your API key before pasting.
+      render: json
+
+  - type: input
+    id: region
+    attributes:
+      label: Your region / catalogue language
+      description: Matching quality varies a lot by catalogue.
+      placeholder: "India, mostly Tamil and Punjabi"

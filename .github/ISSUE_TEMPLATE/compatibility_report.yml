@@ -1,0 +1,68 @@
+name: 📱 Compatibility report
+description: Tell us your phone and YouTube Music client worked — or didn't. Works fine? Still valuable!
+title: "[Compat]: <client> on <phone>"
+labels: ["compatibility"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This is the most useful report this project gets.** It's been tested on
+        exactly one phone with one client, so every data point widens what we can
+        promise the next person.
+
+        Please file this **even if everything worked perfectly** — a confirmed
+        working setup is just as valuable as a broken one.
+
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: Did it work?
+      options:
+        - ✅ Everything worked
+        - ⚠️ Worked, but with a caveat
+        - ❌ Didn't work
+    validations:
+      required: true
+
+  - type: input
+    id: client
+    attributes:
+      label: YouTube Music client
+      description: Which build, and its version if you know it.
+      placeholder: "Morphe 7.x / ReVanced 6.x / official YouTube Music"
+    validations:
+      required: true
+
+  - type: input
+    id: package
+    attributes:
+      label: Package name
+      description: "From: adb shell pm list packages | grep -i music"
+      placeholder: app.morphe.android.apps.youtube.music
+    validations:
+      required: true
+
+  - type: input
+    id: phone
+    attributes:
+      label: Phone and Android version
+      placeholder: "realme RMX3085, Android 13"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: steps
+    attributes:
+      label: Which parts worked?
+      options:
+        - label: The app appears in Shazam's share sheet
+        - label: The song is found (no "couldn't find" toast)
+        - label: The full track actually plays in the client
+        - label: The song lands in the playlist
+        - label: The backfill script worked
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Caveats, workarounds, or what went wrong. Music in a non-English catalogue? Please say — matching quality varies a lot by region.
