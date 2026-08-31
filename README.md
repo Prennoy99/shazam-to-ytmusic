@@ -2,8 +2,8 @@
 
 **Shazam a song, hit Share, and it's already playing in full — and saved to a playlist.**
 
-[![Backend](https://github.com/Prennoy99/shazam-sync/actions/workflows/backend.yml/badge.svg)](https://github.com/Prennoy99/shazam-sync/actions/workflows/backend.yml)
-[![Android](https://github.com/Prennoy99/shazam-sync/actions/workflows/android.yml/badge.svg)](https://github.com/Prennoy99/shazam-sync/actions/workflows/android.yml)
+[![Backend](https://github.com/Prennoy99/shazam-to-ytmusic/actions/workflows/backend.yml/badge.svg)](https://github.com/Prennoy99/shazam-to-ytmusic/actions/workflows/backend.yml)
+[![Android](https://github.com/Prennoy99/shazam-to-ytmusic/actions/workflows/android.yml/badge.svg)](https://github.com/Prennoy99/shazam-to-ytmusic/actions/workflows/android.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---
