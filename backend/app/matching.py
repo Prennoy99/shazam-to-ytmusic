@@ -1,5 +1,3 @@
-from typing import Optional
-
 from .ytmusic_client import get_client
 
 
@@ -7,7 +5,7 @@ def _normalize(name: str) -> str:
     return name.strip().lower()
 
 
-def find_best_match(title: str, artists: list[str]) -> Optional[dict]:
+def find_best_match(title: str, artists: list[str]) -> dict | None:
     query = f"{title} {' '.join(artists)}".strip()
     results = get_client().search(query, filter="songs")
     if not results:

@@ -1,0 +1,17 @@
+# Pin the lint surface explicitly. Ruff's *default* rule set grows between
+# releases, so relying on it means a routine version bump can suddenly fail CI
+# on code that never changed. Selecting rules here keeps upgrades boring.
+
+line-length = 110
+target-version = "py311"
+
+[lint]
+select = [
+    "E",  # pycodestyle errors
+    "F",  # pyflakes
+    "I",  # import sorting
+    "UP", # pyupgrade
+]
+
+[lint.isort]
+known-first-party = ["app", "backfill"]

@@ -48,6 +48,10 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+      # appcompat 1.8.0+ ships Kotlin 2.1 metadata, which the pinned Kotlin
+      # 1.9 compiler cannot read ("incompatible version of Kotlin ... expected
+      # 1.9.0"). Unpin this once the project migrates to Kotlin 2.x.
+      - dependency-name: "androidx.appcompat:appcompat"
 
   - package-ecosystem: github-actions
     directory: /

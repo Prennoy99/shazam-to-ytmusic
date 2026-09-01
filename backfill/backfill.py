@@ -54,7 +54,9 @@ def process_row(session: requests.Session, base_url: str, title: str, artists: l
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("--csv", required=True, help="Path to the Shazam history export CSV")
     parser.add_argument("--backend-url", required=True, help="Deployed backend URL, no trailing slash")
     parser.add_argument("--api-key", required=True, help="Must match the backend's API_KEY")
@@ -62,7 +64,8 @@ def main() -> None:
     parser.add_argument("--artist-column", default="artist")
     parser.add_argument("--delay", type=float, default=0.5, help="Seconds to wait between rows")
     parser.add_argument("--log", default="backfill_results.csv", help="Where to write per-row results")
-    parser.add_argument("--dry-run", action="store_true", help="Parse and print rows without calling the backend")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Parse and print rows without calling the backend")
     args = parser.parse_args()
 
     backend_url = args.backend_url.rstrip("/")
