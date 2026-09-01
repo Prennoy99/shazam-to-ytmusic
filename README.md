@@ -210,6 +210,15 @@ Being upfront, because you're about to point this at your own Google account:
 
 Not affiliated with Apple, Shazam, Google, or YouTube.
 
+## Acknowledgements
+
+- [ytmusicapi](https://github.com/sigma67/ytmusicapi) by sigma67 — does the real
+  heavy lifting against YouTube Music. This project is a thin wrapper around it.
+- The [Morphe](https://github.com/Morphe-Team) and
+  [ReVanced](https://revanced.app/) teams, whose clients this was built around.
+- Scaffolding, test suite, and documentation built with
+  [Claude Code](https://claude.com/claude-code).
+
 ## License
 
 [MIT](LICENSE) — do what you like with it. If you build something better on top,
